@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class login extends AppCompatActivity {
     private EditText name, pass;
     private Button loginBtn,regBtn;
+    String user = "123";
+    String password = "321";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,5 +33,23 @@ public class login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // doesnt work the pop up message aint doing its job
+                String userField = name.getText().toString();
+                String passField = pass.getText().toString();
+
+                if (userField.isEmpty() && passField.isEmpty()) {
+                    Toast.makeText(login.this, "Username/Password input missing", Toast.LENGTH_LONG);
+                }
+                else if(userField == user && passField == password)
+                {
+                    Intent intent = new Intent(login.this, MainActivity.class);
+                    startActivity(intent);
+                }
+                }
+        });
+
+}
 }
