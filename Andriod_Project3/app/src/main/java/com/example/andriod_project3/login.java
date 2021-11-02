@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 public class login extends AppCompatActivity {
     private EditText name, pass;
-    private Button loginBtn, regBtn;
+    private Button loginBtn,regBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
