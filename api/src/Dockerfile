@@ -42,5 +42,8 @@ RUN pip3 install pipenv
 RUN pip3 install --no-cache-dir -r /app/requirements.txt
 RUN pip3 install gunicorn
 
+# collect static files
+RUN python manage.py collectstatic --noinput
+
 EXPOSE 8888
 CMD gunicorn prhome.wsgi:application --bind 0.0.0.0:$PORT
