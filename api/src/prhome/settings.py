@@ -42,10 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'corsheaders',
     'ParkResApp'
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     # 'whitenoise.middleware.WhiteNoiseMiddleware',  # new
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -82,8 +87,12 @@ WSGI_APPLICATION = 'prhome.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dk3vivm4hduam',
+        'USER': 'jkwkbrbvhtvdjr',
+        'PASSWORD': '72bc6b3a52bd604778184d88fca7152d1b151943e973a7456baeace1de679fc9',
+        'HOST': 'ec2-3-218-92-146.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
