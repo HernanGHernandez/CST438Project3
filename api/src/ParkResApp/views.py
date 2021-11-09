@@ -3,46 +3,65 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from ParkResApp.models import User, Parking, Messages
 from ParkResApp.serializers import UserSerializer, ParkingSerializer, MessagesSerializer
 # Create your views here.
 
 #  test the app for debug mode off
-# test for heruko deployment
+
+# all API Views
 
 
+@api_view(['GET'])
 def home(request):
-    data = {'test': 'json!'}
-    return JsonResponse(data)
+    api_urls = {
+        'user': 'user/<str:pk>',
+        'addUser': 'createUser/',
+        'Delete': 'deleteUser/<str:pk>',
+        'Update': 'updateUser/<str:pk>'
+    }
+    return Response(api_urls)
+
+# User API's
 
 
-@csrf_exempt
-def userApi(request, id=100):
+@api_view(['GET'])
+def getUser(request, pk):
     # Get method to get records
-    if request.method == 'GET':
-        user = User.objects.all()
-        user_serializer = UserSerializer(user, many=True)
-        return JsonResponse(user_serializer.data, safe=False)
+    user = User.objects.filter(pk=pk)
+    user_serializer = UserSerializer(user, many=True)
+    return Response(user_serializer.data)
+
+
+@api_view(['POST'])
+def createUser(request):
     # post method to add User
-    elif request.method == 'POST':
-        user_data = JSONParser().parse(request)
-        user_serializer = UserSerializer(data=user_data)
-        # if data valid save into db
-        if user_serializer.is_valid():
-            user_serializer.save()
-            return JsonResponse("Added successfully", safe=False)
-        return JsonResponse("Failed to add user", safe=False)
+    user_data = JSONParser().parse(request)
+    user_serializer = UserSerializer(data=user_data)
+    # if data valid save into db
+    if user_serializer.is_valid():
+        user_serializer.save()
+        return Response("Added successfully")
+    return Response("Failed to add user")
+
+
+@api_view(['PUT'])
+def updateUser(request, pk):
     # Put method to update User
-    elif request.method == 'PUT':
-        user_data = JSONParser().parse(request)
-        user = User.objects.get(userId=user_data['userId'])
-        user_serializer = UserSerializer(user, data=user_data)
-        if user_serializer.is_valid():
-            user_serializer.save()
-            return JsonResponse("Update Succesfull", safe=False)
-        return JsonResponse("Failed to update")
+    user_data = JSONParser().parse(request)
+    user = User.objects.get(pk=pk)
+    user_serializer = UserSerializer(user, data=user_data)
+    if user_serializer.is_valid():
+        user_serializer.save()
+        return Response("Update Succesfull")
+    return Response("Failed to update")
+
+
+@api_view(['DELETE'])
+def deleteUser(request, pk):
     # Delete method
-    elif request.method == 'DELETE':
-        user = User.objects.get(userId=id)
-        user.delete()
-        return JsonResponse("User deleted", safe=False)
+    user = User.objects.get(pk=pk)
+    user.delete()
+    return Response("User deleted")

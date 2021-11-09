@@ -17,10 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from ParkResApp import views
 from django.conf.urls import url, include
-# from views import ping
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
-    url(r'^', include('ParkResApp.urls'))
+    path('ParkResApp/', include('ParkResApp.urls'))
 ]
