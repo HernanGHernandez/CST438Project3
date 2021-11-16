@@ -22,12 +22,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-j^&@+i19(%z_937fqnvvce2p61qw+cy=0+@4xxzq-6$daqj^or'
+# SECRET_KEY = 'django-insecure-j^&@+i19(%z_937fqnvvce2p61qw+cy=0+@4xxzq-6$daqj^or'
+SECRET_KEY = os.environ.get('SECRET_KEY', default='foo')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = int(os.environ.get('DEBUG', default=1))
 DEBUG = int(os.environ.get('DEBUG', default=1))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1',
+                 'https://parkresapp.herokuapp.com/', 'parkresapp.herokuapp.com']
 
 
 # Application definition
@@ -39,10 +42,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'corsheaders',
+    'ParkResApp'
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # new
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -77,8 +87,12 @@ WSGI_APPLICATION = 'prhome.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dk3vivm4hduam',
+        'USER': 'jkwkbrbvhtvdjr',
+        'PASSWORD': '72bc6b3a52bd604778184d88fca7152d1b151943e973a7456baeace1de679fc9',
+        'HOST': 'ec2-3-218-92-146.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -120,6 +134,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
