@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from ParkResApp import views
-# from views import ping
+from django.conf.urls import url, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ping/', views.ping, name="ping"),
+    path('', views.home, name="home"),
+    path('ParkResApp/', include('ParkResApp.urls'))
 ]

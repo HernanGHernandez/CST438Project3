@@ -8,11 +8,15 @@ class User(models.Model):
     username = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
 
+    def __str__(self):
+        return str(self.userId) + self.username
+
 
 class Parking(models.Model):
     parkingId = models.AutoField(primary_key=True)
     slot = models.IntegerField()
     lot = models.CharField(max_length=50)
+    parkSwitch = models.BooleanField(default=True)
     userId = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
