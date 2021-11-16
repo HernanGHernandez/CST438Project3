@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Andriod_Project3">
         <activity
+            android:name=".edit_User"
+            android:exported="true" />
+        <activity
+            android:name=".view_parking_lot"
+            android:exported="true" />
+        <activity
             android:name=".create_account"
             android:exported="false" />
         <activity
