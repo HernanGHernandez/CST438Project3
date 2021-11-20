@@ -8,6 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,7 +50,11 @@ public class login extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // doesnt work the pop up message aint doing its job
+                Retrofit.Builder builder = new  Retrofit.Builder()
+                        .baseUrl("http://parkresapp.herokuapp.com/")
+                        .addConverterFactory(GsonConverterFactory.create());
+
+                Retrofit retrofit = builder.build();
                 String userField = name.getText().toString();
                 String passField = pass.getText().toString();
 
