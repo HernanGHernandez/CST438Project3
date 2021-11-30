@@ -10,8 +10,8 @@ from rest_framework import viewsets
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from ParkResApp.models import User, Parking, Messages
-from ParkResApp.serializers import UserSerializer, ParkingSerializer, MessagesSerializer
+from ParkResApp.models import User, Messages, LotA, LotB, LotC, LotD
+from ParkResApp.serializers import UserSerializer, MessagesSerializer, LotASerializer, LotBSerializer, LotCSerializer, LotDSerializer
 # from .filters import lotFilter
 # Create your views here.
 

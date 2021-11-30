@@ -10,8 +10,8 @@ from rest_framework import viewsets
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from ParkResApp.models import User, Parking, Messages
-from ParkResApp.serializers import UserSerializer, ParkingSerializer, MessagesSerializer
+from ParkResApp.models import User, Messages, LotA, LotB, LotC, LotD
+from ParkResApp.serializers import UserSerializer, MessagesSerializer, LotASerializer, LotBSerializer, LotCSerializer, LotDSerializer
 # from .filters import lotFilter
 
 
@@ -22,14 +22,16 @@ def home(request):
         'add User': 'createUser/',
         'Delete User': 'deleteUser/<str:pk>',
         'Update user': 'updateUser/<str:pk>',
-        'add parking': 'createParking/',
-        'parking': 'getParking/<str:pk>',
-        'update Parking': 'updateParking/<str:pk>',
+
+        'add parking A,B,C,D change lot': 'createLotA/',
+        'get Parking by id change lot': 'getLotA/<str:pk>',
+        'update Parking by id change lot': 'updateParkingLotA/<str:pk>',
+        'Get all Parking by User change lot': 'user/userId/userGetLotA/',
+        'Update parking by User change lot': 'user/userId/userUpdateParkingLotA/parkingId/',
+
         'add message': 'createMessage/',
         'message': 'getMessage/<str:pk>',
         'update message': 'updateMessage/<str:pk>',
-        'Get all Parking by User': 'user/userId/getParking/',
-        'Update parking by User': 'user/userId/updateParking/parkingId/'
     }
     return Response(api_urls)
 
