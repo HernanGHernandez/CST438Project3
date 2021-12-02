@@ -23,9 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class login extends AppCompatActivity {
     private EditText name, pass;
-    private Button loginBtn,regBtn;
-    String user = "123";
-    String password = "321";
+    private Button loginBtn, regBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,74 +36,37 @@ public class login extends AppCompatActivity {
         loginBtn = findViewById(R.id.loginBtn);
         regBtn = findViewById(R.id.regBtn);
 
-
-        // register button
-        regBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(login.this, create_account.class);
-                startActivity(intent);
-            }
+        regBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(login.this, create_account.class);
+            startActivity(intent);
         });
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Retrofit.Builder builder = new  Retrofit.Builder()
-                        .baseUrl("http://parkresapp.herokuapp.com/")
-                        .addConverterFactory(GsonConverterFactory.create());
-                Retrofit retrofit = builder.build();
+        loginBtn.setOnClickListener(v -> {
+            Retrofit.Builder builder = new Retrofit.Builder()
+                    .baseUrl("http://parkresapp.herokuapp.com/")
+                    .addConverterFactory(GsonConverterFactory.create());
+            Retrofit retrofit = builder.build();
 
-                user user1= retrofit.create(user.class);
-               // Call<person> logino = user1.login();
+            user user1 = retrofit.create(user.class);
+            String userField = name.getText().toString();
+            String passField = pass.getText().toString();
 
-
-                String userField = name.getText().toString();
-                String passField = pass.getText().toString();
-              //  login_class login = new login_class(userField, passField);
-
-                if (userField.isEmpty() && passField.isEmpty()) {
-                    alert("No Password nor Username was entered");
+            Call < login_class > logining = user1.login(userField, passField);
+            logining.enqueue(new Callback < login_class > () {
+                @Override
+                public void onResponse(Call < login_class > call, Response < login_class > response) {
+                    Intent intent = new Intent(login.this, MainActivity.class); // takes you back to main because I dont know what to put instead
+                    startActivity(intent);
                 }
-                else {
-                    Call<login_class> logino = user1.login(userField,passField);
-                    logino.enqueue(new Callback<login_class>() {
-                        @Override
-                        public void onResponse(Call<login_class> call, Response<login_class> response) {
-
-                            Intent intent = new Intent(login.this, MainActivity.class);// takes you back to main because I dont know what to put instead
-                            startActivity(intent);
-                        }
-
-                        @Override
-                        public void onFailure(Call<login_class> call, Throwable t) {
-                            alert("login failed");
-                        }
-                    });
-                    //Call<person> logino = user1.login(new JsonObject());
-                  //  logino.enqueue(new Callback<person>() {
-                  //      @Override
-               //         public void onResponse(Call<person> call, Response<person> response) {
-                //            Intent intent = new Intent(login.this, MainActivity.class);// takes you back to main because I dont know what to put instead
-                 //           startActivity(intent);
-                        }
-
-                  //      @Override
-                    ////    public void onFailure(Call<person> call, Throwable t) {
-                      //      alert("login failed");
-                        }
-                    });
+                @Override
+                public void onFailure(Call < login_class > call, Throwable t) {
+                    alert("login failed");
                 }
+            });
 
+        });
+    }
 
-
-                //else if(userField.equals(user) && passField.equals(password))
-                //{
-                  //  Intent intent = new Intent(login.this, MainActivity.class);// takes you back to main because I dont know what to put instead
-                   // startActivity(intent);
-                //}
-
-    private void alert(String message)
-    {
+    private void alert(String message) {
         AlertDialog dlg = new AlertDialog.Builder(login.this)
                 .setTitle("Error")
                 .setMessage(message)

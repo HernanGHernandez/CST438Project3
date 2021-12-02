@@ -16,7 +16,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class create_account extends AppCompatActivity {
-    private Button backk;
+    private Button back_home;
     private Button create;
     private EditText username;
     private EditText password;
@@ -28,44 +28,37 @@ public class create_account extends AppCompatActivity {
         username = findViewById(R.id.User);
         password = findViewById(R.id.create_password);
         create = findViewById(R.id.button);
-        backk = findViewById(R.id.backk);
+        back_home = findViewById(R.id.backk);
 
-        backk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(create_account.this, login.class);
-                startActivity(intent);
-            }
+        back_home.setOnClickListener(v -> {
+            Intent intent = new Intent(create_account.this, login.class);
+            startActivity(intent);
         });
-        create.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Retrofit.Builder builder = new  Retrofit.Builder()
-                        .baseUrl("http://parkresapp.herokuapp.com/")
-                        .addConverterFactory(GsonConverterFactory.create());
-                Retrofit retrofit = builder.build();
-                user account = retrofit.create(user.class);
-                String new_user = username.getText().toString();
-                String new_pass = password.getText().toString();
-                Call<person> new_person = account.create(new_user,new_pass);
-                new_person.enqueue(new Callback<person>() {
-                    @Override
-                    public void onResponse(Call<person> call, Response<person> response) {
-                        Intent intent = new Intent(create_account.this, login.class);// takes you back to main because I dont know what to put instead
-                        startActivity(intent);
-                    }
+        create.setOnClickListener(v -> {
+            Retrofit.Builder builder = new Retrofit.Builder()
+                    .baseUrl("http://parkresapp.herokuapp.com/")
+                    .addConverterFactory(GsonConverterFactory.create());
+            Retrofit retrofit = builder.build();
+            user account = retrofit.create(user.class);
+            String new_user = username.getText().toString();
+            String new_pass = password.getText().toString();
+            Call < person > new_person = account.create(new_user, new_pass);
+            new_person.enqueue(new Callback < person > () {
+                @Override
+                public void onResponse(Call < person > call, Response < person > response) {
+                    Intent intent = new Intent(create_account.this, login.class); // takes you back to main because I dont know what to put instead
+                    startActivity(intent);
+                }
 
-                    @Override
-                    public void onFailure(Call<person> call, Throwable t) {
-                        alert("creation failed");
-                    }
-                });
+                @Override
+                public void onFailure(Call < person > call, Throwable t) {
+                    alert("creation failed");
+                }
+            });
 
-            }
         });
     }
-    private void alert(String message)
-    {
+    private void alert(String message) {
         AlertDialog dlg = new AlertDialog.Builder(create_account.this)
                 .setTitle("Error")
                 .setMessage(message)
