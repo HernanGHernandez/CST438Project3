@@ -1,13 +1,27 @@
 package com.example.andriod_project3;
 
 public class person {
-    private String token;
-
-    public String getToken(){
-        return token;
+    String name;
+    String password;
+    public person(String name1, String password1)
+    {
+        name = name1;
+        password = password1;
     }
 
-    public void setToken(String token){
-        this.token = token;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

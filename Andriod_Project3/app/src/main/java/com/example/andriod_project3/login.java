@@ -71,6 +71,7 @@ public class login extends AppCompatActivity {
                     logino.enqueue(new Callback<login_class>() {
                         @Override
                         public void onResponse(Call<login_class> call, Response<login_class> response) {
+
                             Intent intent = new Intent(login.this, MainActivity.class);// takes you back to main because I dont know what to put instead
                             startActivity(intent);
                         }
