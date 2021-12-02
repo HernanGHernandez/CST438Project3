@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='foo')
 DEBUG = int(os.environ.get('DEBUG', default=1))
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1',
-                 'https://parkresapp.herokuapp.com/', 'parkresapp.herokuapp.com']
+                 'park-res.herokuapp.com', 'parkresapp.herokuapp.com']
 
 
 # Application definition
