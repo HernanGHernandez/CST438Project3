@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from ParkResApp import views
 from django.conf.urls import url, include
+from ParkResApp.views import messageViews
+from ParkResApp.views import parkingViews
+from ParkResApp.views import userViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
