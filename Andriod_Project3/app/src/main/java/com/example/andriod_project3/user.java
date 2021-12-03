@@ -13,7 +13,7 @@ public interface user {
     @Headers( "Content-Type: application/json" )
     @POST("login/")
     Call<login_class> login(@Field("username")String name, @Field("password") String password);
-    @FormUrlEncoded
-    @POST("Create/")
+    @Headers( "Content-Type: application/json" )
+    @POST("createUser/")
     Call<person> create(@Field("username")String user, @Field("password")String pass);
 }

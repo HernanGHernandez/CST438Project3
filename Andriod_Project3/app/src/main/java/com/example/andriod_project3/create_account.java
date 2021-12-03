@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,7 +37,7 @@ public class create_account extends AppCompatActivity {
         });
         create.setOnClickListener(v -> {
             Retrofit.Builder builder = new Retrofit.Builder()
-                    .baseUrl("http://parkresapp.herokuapp.com/")
+                    .baseUrl("http://park-res.herokuapp.com/")
                     .addConverterFactory(GsonConverterFactory.create());
             Retrofit retrofit = builder.build();
             user account = retrofit.create(user.class);
@@ -53,6 +54,7 @@ public class create_account extends AppCompatActivity {
                 @Override
                 public void onFailure(Call < person > call, Throwable t) {
                     alert("creation failed");
+                    Log.e("create_account failed", t.toString());
                 }
             });
 
