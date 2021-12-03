@@ -23,5 +23,7 @@ from ParkResApp.views import userViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ParkResApp/', include('ParkResApp.urls'))
+    #path('', views.home, name="home"),
+    path('', include('ParkResApp.urls'))
+    #path('ParkResApp/', include('ParkResApp.urls'))
 ]
