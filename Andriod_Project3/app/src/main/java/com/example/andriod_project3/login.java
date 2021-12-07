@@ -42,7 +42,7 @@ public class login extends AppCompatActivity {
         });
         loginBtn.setOnClickListener(v -> {
             Retrofit.Builder builder = new Retrofit.Builder()
-                    .baseUrl("http://parkresapp.herokuapp.com/")
+                    .baseUrl("http://park-res.herokuapp.com/")
                     .addConverterFactory(GsonConverterFactory.create());
             Retrofit retrofit = builder.build();
 
