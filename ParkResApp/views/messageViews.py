@@ -18,20 +18,20 @@ from ParkResApp.serializers import UserSerializer, MessagesSerializer, LotASeria
 @api_view(['GET'])
 def home(request):
     api_urls = {
-        'user': 'user/<str:pk>',
+        'user': 'user/<int:pk>',
         'add User': 'createUser/',
-        'Delete User': 'deleteUser/<str:pk>',
-        'Update user': 'updateUser/<str:pk>',
+        'Delete User': 'deleteUser/<int:pk>',
+        'Update user': 'updateUser/<int:pk>',
 
         'add parking A,B,C,D change lot': 'createLotA/',
-        'get Parking by id change lot': 'getLotA/<str:pk>',
-        'update Parking by id change lot': 'updateParkingLotA/<str:pk>',
+        'get Parking by id change lot': 'getLotA/<int:pk>',
+        'update Parking by id change lot': 'updateParkingLotA/<int:pk>',
         'Get all Parking by User change lot': 'user/userId/userGetLotA/',
         'Update parking by User change lot': 'user/userId/userUpdateParkingLotA/parkingId/',
 
         'add message': 'createMessage/',
-        'message': 'getMessage/<str:pk>',
-        'update message': 'updateMessage/<str:pk>',
+        'message': 'getMessage/<int:pk>',
+        'update message': 'updateMessage/<int:pk>',
     }
     return Response(api_urls)
 
