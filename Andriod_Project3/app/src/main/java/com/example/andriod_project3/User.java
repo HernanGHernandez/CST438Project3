@@ -1,42 +1,19 @@
 package com.example.andriod_project3;
-import com.google.gson.annotations.SerializedName;
 
+import com.google.gson.JsonObject;
 
-public class User {
-    private int userId;
-    private String username;
-    private String password;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Headers;
+import retrofit2.http.POST;
 
-    @SerializedName("body")
-    private String text;
-
-    public User(int userId, String username, String password) {
-        this.userId = userId;
-        this.username = username;
-        this.password = password;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+public interface user {
+    @Headers( "Content-Type: application/json" )
+    @POST("login/")
+    Call<login_class> login(@Field("username")String name, @Field("password") String password);
+    @Headers( "Content-Type: application/json" )
+    @POST("createUser/")
+    Call<person> create(@Field("username")String user, @Field("password")String pass);
 }
