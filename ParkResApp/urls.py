@@ -25,7 +25,7 @@ urlpatterns = [
 
     #     # ---LotA-urls---
     path('createLotA/', lotAViews.createLotA, name='createLotA'),
-    path('getLotA/<int:pk>', lotAViews.getLotA, name='getLotA'),
+    path('getLotA/', lotAViews.getLotA, name='getLotA'),
     path('updateParkingLotA/<str:pk>',
          lotAViews.updateParkingLotA, name='updateParkingLotA'),
     path('user/<str:pk1>/userGetLotA/',
@@ -36,7 +36,7 @@ urlpatterns = [
 
     #     # ---LotB-urls---
     path('createLotB/', lotBViews.createLotB, name='createLotB'),
-    path('getLotB/<int:pk>', lotBViews.getLotB, name='getLotB'),
+    path('getLotB/', lotBViews.getLotB, name='getLotB'),
     path('updateParkingLotB/<str:pk>',
          lotBViews.updateParkingLotB, name='updateParkingLotB'),
     path('user/<str:pk1>/userGetLotB/',
@@ -46,7 +46,7 @@ urlpatterns = [
 
     #     # ---LotC-urls---
     path('createLotC/', lotCViews.createLotC, name='createLotC'),
-    path('getLotC/<int:pk>', lotCViews.getLotC, name='getLotC'),
+    path('getLotC/>', lotCViews.getLotC, name='getLotC'),
     path('updateParkingLotC/<str:pk>',
          lotCViews.updateParkingLotC, name='updateParkingLotC'),
     path('user/<str:pk1>/userGetLotC/',
@@ -56,7 +56,7 @@ urlpatterns = [
 
     #     # ---LotD-urls---
     path('createLotD/', lotDViews.createLotD, name='createLotD'),
-    path('getLotD/<int:pk>', lotDViews.getLotD, name='getLotD'),
+    path('getLotD/', lotDViews.getLotD, name='getLotD'),
     path('updateParkingLotD/<str:pk>',
          lotDViews.updateParkingLotD, name='updateParkingLotD'),
     path('user/<str:pk1>/userGetLotD/',
