@@ -57,7 +57,7 @@
 
         <!--            column 1-->
         <androidx.cardview.widget.CardView
-            android:id="@+id/bicep"
+            android:id="@+id/A"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -105,7 +105,7 @@
         </androidx.cardview.widget.CardView>
         <!--            column 2-->
         <androidx.cardview.widget.CardView
-            android:id="@+id/chest"
+            android:id="@+id/B"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -152,7 +152,7 @@
         </androidx.cardview.widget.CardView>
         <!--            column 3-->
         <androidx.cardview.widget.CardView
-            android:id="@+id/back"
+            android:id="@+id/C"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -198,7 +198,7 @@
         </androidx.cardview.widget.CardView>
         <!--            column 4-->
         <androidx.cardview.widget.CardView
-            android:id="@+id/legs"
+            android:id="@+id/D"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
