@@ -29,9 +29,9 @@ def createLotB(request):
 
 
 @api_view(['GET'])
-def getLotB(request, pk):
+def getLotB(request):
     # Get method to get parking records
-    parking = LotB.objects.filter(pk=pk)
+    parking = LotB.objects.all()
     parking_serializer = LotBSerializer(parking, many=True)
     return Response(parking_serializer.data)
 
