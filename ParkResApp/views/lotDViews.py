@@ -29,9 +29,9 @@ def createLotD(request):
 
 
 @api_view(['GET'])
-def getLotD(request, pk):
+def getLotD(request):
     # Get method to get parking records
-    parking = LotD.objects.filter(pk=pk)
+    parking = LotD.objects.all()
     parking_serializer = LotDSerializer(parking, many=True)
     return Response(parking_serializer.data)
 
