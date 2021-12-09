@@ -6,6 +6,7 @@ from ParkResApp.views import messageViews, userViews, lotAViews, lotBViews, lotC
 
 urlpatterns = [
     path('', messageViews.home, name='home'),
+    path('user/', userViews.allUsers, name='allUsers'),
     path('user/<int:pk>', userViews.getUser, name='getUser'),
     path('updateUser/<int:pk>', userViews.updateUser, name='updateUser'),
     path('deleteUser/<int:pk>', userViews.deleteUser, name='deleteUser'),
@@ -42,7 +43,7 @@ urlpatterns = [
     path('getLotB/', lotBViews.getLotB, name='getLotB'),
     path('updateParkingLotB/<str:pk>',
 
- 
+
          lotBViews.updateParkingLotB, name='updateParkingLotB'),
     path('user/<int:pk1>/userGetLotB/',
          lotBViews.userGetLotB, name='userGetLotB'),
@@ -77,4 +78,4 @@ urlpatterns = [
     path('createMessage/', messageViews.createMessage, name='createMessage'),
     path('getMessage/<int:pk>', messageViews.getMessage, name='getMessage'),
     path('updateMessage/<int:pk>', messageViews.updateMessage, name='updateMessage')
-
+]

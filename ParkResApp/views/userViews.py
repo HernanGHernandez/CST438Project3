@@ -17,6 +17,14 @@ from ParkResApp.serializers import UserSerializer, MessagesSerializer, LotASeria
 
 
 @api_view(['GET'])
+def allUsers(request):
+    # Get method to get records
+    user = User.objects.all()
+    user_serializer = UserSerializer(user, many=True)
+    return Response(user_serializer.data)
+
+
+@api_view(['GET'])
 def getUser(request, pk):
     # Get method to get records
     user = User.objects.filter(pk=pk)
