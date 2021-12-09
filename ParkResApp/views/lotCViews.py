@@ -29,9 +29,9 @@ def createLotC(request):
 
 
 @api_view(['GET'])
-def getLotC(request, pk):
+def getLotC(request):
     # Get method to get parking records
-    parking = LotC.objects.filter(pk=pk)
+    parking = LotC.objects.all()
     parking_serializer = LotCSerializer(parking, many=True)
     return Response(parking_serializer.data)
 

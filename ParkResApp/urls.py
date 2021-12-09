@@ -25,8 +25,10 @@ urlpatterns = [
 
     #     # ---LotA-urls---
     path('createLotA/', lotAViews.createLotA, name='createLotA'),
-    path('getLotA/<int:pk>', lotAViews.getLotA, name='getLotA'),
-    path('updateParkingLotA/<int:pk>',
+
+    path('getLotA/', lotAViews.getLotA, name='getLotA'),
+    path('updateParkingLotA/<str:pk>',
+
          lotAViews.updateParkingLotA, name='updateParkingLotA'),
     path('user/<int:pk1>/userGetLotA/',
          lotAViews.userGetLotA, name='userGetLotA'),
@@ -36,8 +38,11 @@ urlpatterns = [
 
     #     # ---LotB-urls---
     path('createLotB/', lotBViews.createLotB, name='createLotB'),
-    path('getLotB/<int:pk>', lotBViews.getLotB, name='getLotB'),
-    path('updateParkingLotB/<int:pk>',
+
+    path('getLotB/', lotBViews.getLotB, name='getLotB'),
+    path('updateParkingLotB/<str:pk>',
+
+ 
          lotBViews.updateParkingLotB, name='updateParkingLotB'),
     path('user/<int:pk1>/userGetLotB/',
          lotBViews.userGetLotB, name='userGetLotB'),
@@ -46,8 +51,10 @@ urlpatterns = [
 
     #     # ---LotC-urls---
     path('createLotC/', lotCViews.createLotC, name='createLotC'),
-    path('getLotC/<int:pk>', lotCViews.getLotC, name='getLotC'),
-    path('updateParkingLotC/<int:pk>',
+
+    path('getLotC/>', lotCViews.getLotC, name='getLotC'),
+    path('updateParkingLotC/<str:pk>',
+
          lotCViews.updateParkingLotC, name='updateParkingLotC'),
     path('user/<int:pk1>/userGetLotC/',
          lotCViews.userGetLotC, name='userGetLotC'),
@@ -56,8 +63,10 @@ urlpatterns = [
 
     #     # ---LotD-urls---
     path('createLotD/', lotDViews.createLotD, name='createLotD'),
-    path('getLotD/<int:pk>', lotDViews.getLotD, name='getLotD'),
-    path('updateParkingLotD/<int:pk>',
+
+    path('getLotD/', lotDViews.getLotD, name='getLotD'),
+    path('updateParkingLotD/<str:pk>',
+
          lotDViews.updateParkingLotD, name='updateParkingLotD'),
     path('user/<int:pk1>/userGetLotD/',
          lotDViews.userGetLotD, name='userGetLotD'),
@@ -68,4 +77,4 @@ urlpatterns = [
     path('createMessage/', messageViews.createMessage, name='createMessage'),
     path('getMessage/<int:pk>', messageViews.getMessage, name='getMessage'),
     path('updateMessage/<int:pk>', messageViews.updateMessage, name='updateMessage')
-]
+

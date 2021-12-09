@@ -2,4 +2,7 @@
     <string name="app_name">Andriod_Project3</string>
     <string name="parkinglot">parking lot</string>
     <string name="Spots_left">spots left </string>
+    <string name="space_number">space Number</string>
+    <string name="taken">taken</string>
+    <string name="userid">UserID</string>
 </resources>
