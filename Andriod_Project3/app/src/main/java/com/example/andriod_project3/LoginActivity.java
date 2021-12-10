@@ -93,10 +93,9 @@ public class LoginActivity extends AppCompatActivity {
                 }else{
                     for (User user : arr){
                         // If username exists
-                        Toast.makeText(LoginActivity.this, "Hi " + user.getName(), Toast.LENGTH_SHORT).show();
                         if(user.getUsername().equals(userName)){
                             if(user.getPassword().equals(passWord)){
-                                Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Hi " + user.getName(), Toast.LENGTH_SHORT).show();
                                 Intent intent = factory.getIntent(LoginActivity.this, ParkingLotActivity.class);
                                 startActivity(intent);
                             }
