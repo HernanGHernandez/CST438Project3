@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -77,14 +78,22 @@ public class LoginActivity extends AppCompatActivity {
                 String userName = etUsername.getText().toString();
                 String passWord = etPassword.getText().toString();
 
+                User sample1 = new User("bob", "a", "a");
+                User sample2 = new User("james", "b", "b");
+                User sample3 = new User("chris", "c", "c");
+
+                ArrayList<User> arr = new ArrayList<User>();
+                arr.addAll(Arrays.asList(sample1));
+                arr.addAll(Arrays.asList(sample2));
+                arr.addAll(Arrays.asList(sample3));
+
 
                 if(userName.isEmpty() || passWord.isEmpty()){
                     Toast.makeText(LoginActivity.this, "All fields required", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(LoginActivity.this, "yooo", Toast.LENGTH_SHORT).show();
-                    for (User user : users){
+                    for (User user : arr){
                         // If username exists
-                        Toast.makeText(LoginActivity.this, "yesss", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Hi " + user.getName(), Toast.LENGTH_SHORT).show();
                         if(user.getUsername().equals(userName)){
                             if(user.getPassword().equals(passWord)){
                                 Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
