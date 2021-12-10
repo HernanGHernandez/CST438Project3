@@ -32,7 +32,6 @@ public class ParkingLotActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.parking_lot);
 
-
         A = (CardView) findViewById(R.id.A);
         B = (CardView) findViewById(R.id.B);
         C = (CardView) findViewById(R.id.C);
