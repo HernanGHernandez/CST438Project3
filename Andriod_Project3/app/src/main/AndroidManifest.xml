@@ -2,27 +2,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.andriod_project3">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Andriod_Project3">
         <activity
-            android:name=".edit_User"
+            android:name=".EditUser"
             android:exported="true" />
         <activity
             android:name=".view_parking_lot"
             android:exported="true" />
         <activity
-            android:name=".create_account"
+            android:name=".CreateAccountActivity"
             android:exported="false" />
         <activity
-            android:name=".login"
+            android:name=".ParkingLotActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
