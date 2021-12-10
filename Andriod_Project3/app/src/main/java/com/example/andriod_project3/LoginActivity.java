@@ -102,8 +102,6 @@ public class LoginActivity extends AppCompatActivity {
                             else{
                                 Toast.makeText(LoginActivity.this, "Password is incorrect", Toast.LENGTH_SHORT).show();
                             }
-                        }else{
-                            Toast.makeText(LoginActivity.this, "Username not found", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
